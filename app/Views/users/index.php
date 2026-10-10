@@ -8,13 +8,14 @@
     <h1>User Accounts</h1>
 
     <p class="lead">
-        Review the staff directory and the roles assigned to each account.
+        Review the staff directory and the date each account was created.
     </p>
 </section>
 
 <section class="table-card">
     <div class="table-toolbar">
         <h2>Staff directory</h2>
+
         <span class="record-count">
             <?= count($users) ?> records
         </span>
@@ -27,7 +28,7 @@
                     <th>No.</th>
                     <th>Username</th>
                     <th>Full Name</th>
-                    <th>Role</th>
+                    <th>Created At</th>
                 </tr>
             </thead>
 
@@ -45,9 +46,7 @@
                         <td><?= esc($user['full_name']) ?></td>
 
                         <td>
-                            <span class="role-tag">
-                                <?= esc($user['role']) ?>
-                            </span>
+                            <?= esc($user['created_at']) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -58,10 +57,11 @@
 
 <div class="info-panel">
     <div class="eyebrow">ABOUT THESE RECORDS</div>
+
     <p>
-        These are sample staff accounts. The role labels are for display
-        only; this version does not implement login permissions or
-        authentication.
+        These user accounts are retrieved from the MySQL database.
+        The current version displays account information without
+        implementing authentication or role-based permissions.
     </p>
 </div>
 
