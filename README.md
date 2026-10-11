@@ -1,69 +1,136 @@
-# CodeIgniter 4 Application Starter
+# Tolentino POS — CodeIgniter 4
 
-## What is CodeIgniter?
+A basic Point-of-Sale (POS) management system developed using CodeIgniter 4, PHP, MySQL, HTML, and CSS.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+This project was created for **IT0049 — Web System Technologies** at FEU Institute of Technology.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Project Overview
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Tolentino POS is a database-driven web application that allows users to manage customer and staff records through a clean, responsive black-and-white interface.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+The project was developed progressively through three technical formative assessments.
 
-## Installation & updates
+## Features
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### TFA1 — Basic POS Website
+- Home page
+- About page
+- Customer Accounts listing
+- User Accounts listing
+- Static PHP arrays for sample records
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+### TFA2 — Database Integration
+- MySQL database connection
+- CustomerModel and UserModel
+- Database-driven customer and user listings
+- Sample customer and user records
 
-## Setup
+### TFA3 — Forms, Validation, and File Upload
+- Create new customer accounts
+- Create new user accounts
+- Edit existing customer and user records
+- Form validation with error messages
+- Unique username validation
+- Preservation of entered form values after validation errors
+- JPG and PNG avatar uploads (maximum 2 MB)
+- Automatic avatar resizing to 300 × 300 pixels
+- Placeholder avatars for users without profile pictures
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+## Technologies Used
 
-## Important Change with index.php
+- CodeIgniter 4
+- PHP 8.2+
+- MySQL / MariaDB
+- Apache (XAMPP)
+- Composer
+- HTML and CSS
+- Git and GitHub
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## Installation Instructions
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+1. Install XAMPP, Composer, and Git.
+2. Clone this repository into `C:\xampp\htdocs`.
+3. Open the project folder in VS Code.
+4. Open a terminal inside the project and run:
 
-**Please** read the user guide for a better explanation of how CI4 works!
+   `composer install`
 
-## Repository Management
+5. Start Apache and MySQL using XAMPP.
+6. Open phpMyAdmin at `http://localhost/phpmyadmin`.
+7. Create a database named `tolentino_pos`.
+8. Import the database export from `database/tolentino_pos.sql`.
+9. Copy the `env` file and rename the copy to `.env`.
+10. Configure the database settings in `.env`:
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+```ini
+database.default.hostname = localhost
+database.default.database = tolentino_pos
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+11. Configure the base URL:
 
-## Server Requirements
+```ini
+app.baseURL = 'http://localhost/TFA1_Tolentino-Czarli/'
+```
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+12. Open the application in your browser:
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+`http://localhost/TFA1_Tolentino-Czarli/`
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+**Note:** The localhost URL assumes the project folder retains its original name and Apache is configured to route requests to CodeIgniter's `public` directory.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## Application Routes
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+| Page | Route |
+|---|---|
+| Home | `/` |
+| About | `/about` |
+| Customer Accounts | `/customers` |
+| New Customer | `/customers/new` |
+| Edit Customer | `/customers/{id}/edit` |
+| User Accounts | `/users` |
+| New User | `/users/new` |
+| Edit User | `/users/{id}/edit` |
+
+## Database
+
+Database name: `tolentino_pos`
+
+Tables:
+- `customers`
+- `users`
+
+The SQL export is available at `database/tolentino_pos.sql`.
+
+The users table includes an `avatar` column for storing profile image filenames.
+
+## File Uploads
+
+User avatars are stored in:
+
+`public/uploads/avatars/`
+
+Uploaded JPG and PNG files are validated, resized, and saved using generated filenames.
+
+Only the filenames are stored in the database.
+
+## Development Notes
+
+- This project is intended for academic use.
+- Authentication and payment processing are not implemented.
+- Sample records are used for demonstration.
+- Environment-specific credentials are excluded from version control.
+
+## Deployment
+
+A publicly hosted version will be added after deployment.
+
+## Developer
+
+Developed for IT0049 — Web System Technologies.
+
+FEU Institute of Technology.
