@@ -28,7 +28,7 @@ abstract class BaseController extends Controller
      */
 
     // protected $session;
-    protected $helpers = ['url'];
+    protected $helpers = ['url', 'form', 'html', 'text', 'cookie', 'filesystem', 'number', 'date'];
 
     /**
      * @param CLIRequest|IncomingRequest $request

@@ -10,7 +10,15 @@
     <p class="lead">
         Browse the customer directory and review its contact information.
     </p>
+
+    <div class="button-row">
+    <a class="button" href="<?= site_url('customers/new') ?>">
+        + New Customer
+    </a>
+</div>
+
 </section>
+
 
 <section class="table-card">
     <div class="table-toolbar">
@@ -28,6 +36,7 @@
                     <th>Full Name</th>
                     <th>Email Address</th>
                     <th>Phone Number</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -44,6 +53,14 @@
 
                         <td><?= esc($customer['email']) ?></td>
                         <td><?= esc($customer['phone']) ?></td>
+                        <td>
+                            <a
+                                class="button button-outline"
+                                href="<?= site_url('customers/' . $customer['id'] . '/edit') ?>"
+                            >
+                                Edit
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
